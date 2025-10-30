@@ -25,17 +25,20 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 class AceiteEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
-
     private String idUsuario;
     private boolean consentimento;
     private LocalDateTime dataHora;
     private String canal;
+    // Métodos setters explícitos para evitar problemas de compilação
+    public void setIdUsuario(String idUsuario) { this.idUsuario = idUsuario; }
+    public void setConsentimento(boolean consentimento) { this.consentimento = consentimento; }
+    public void setDataHora(LocalDateTime dataHora) { this.dataHora = dataHora; }
+    public void setCanal(String canal) { this.canal = canal; }
 }
+
 /**
  * Adaptador de Saída (Driven Adapter) para persistência.
  * Implementa a porta de repositório e usa Spring Data JPA para interagir com o banco.
@@ -71,6 +74,3 @@ public class AceiteRepositoryAdapter implements AceiteRepositoryPort {
 @Repository
 interface SpringDataAceiteRepository extends JpaRepository<AceiteEntity, Long> {
 }
-
-
-

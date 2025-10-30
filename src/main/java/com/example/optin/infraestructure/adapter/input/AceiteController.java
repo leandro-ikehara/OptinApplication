@@ -49,6 +49,10 @@ public class AceiteController {
         private String idUsuario;
         private boolean consentimento;
         private String canal;
+        // Métodos para compatibilidade com o uso no controller
+        public String getIdUsuario() { return idUsuario; }
+        public boolean isConsentimento() { return consentimento; }
+        public String getCanal() { return canal; }
     }
 
     /**
@@ -56,7 +60,10 @@ public class AceiteController {
      */
     @Data
     static class TokenResponse {
-        private final String tokenAutorizacao;
+        private String tokenAutorizacao;
+        public TokenResponse(String tokenAutorizacao) {
+            this.tokenAutorizacao = tokenAutorizacao;
+        }
+        public TokenResponse() {}
     }
 }
-
